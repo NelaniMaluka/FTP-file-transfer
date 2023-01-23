@@ -43,12 +43,11 @@ def OpenFTP():
     os.chdir(srcFolder)
     for file in files:
         if os.path.isfile(file):
-            full_dest = os.path.join(destFolder, file)
             shutil.move(file,destFolder)
 
     ftp.quit()
 
-schedule.every(1).day.at("9:00").do(OpenFTP())
+schedule.every().day.at("09:00").do(OpenFTP())
 
 while True:
     schedule.run_pending()
